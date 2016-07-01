@@ -52,3 +52,5 @@ end
 gem 'puma'
 
 gem 'simple_form'
+
+gem 'rails_admin'

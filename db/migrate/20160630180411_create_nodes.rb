@@ -6,6 +6,7 @@ class CreateNodes < ActiveRecord::Migration
       t.string  :questionable_type
       t.integer :next_node_correct_id
       t.integer :next_node_wrong_id
+      t.boolean :first_node
       t.timestamps null: false
     end
 

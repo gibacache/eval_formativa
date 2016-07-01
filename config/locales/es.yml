@@ -1,0 +1,22 @@
+es:
+  activerecord:
+    models:
+      tree: Árbol
+      response: Respuesta
+      questionable: Pregunta
+      argumentative_question: Pregunta Argumentador
+      argumentative_answer: Respuesta Argumentador
+      node: Nodo
+      user: Usuario
+    attributes:
+      tree:
+        n_repeat: Numero de repeticiones N
+        first_question: Primera pregunta
+      argumentative_question:
+        question: Pregunta
+      questionable:
+        question: Pregunta
+      node:
+        questionable: Pregunta
+        tree: Árbol
+

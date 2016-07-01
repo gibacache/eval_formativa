@@ -1,2 +1,2 @@
-class ArgumentativeQuestion < ActiveRecord::Base
+class ArgumentativeQuestion < Question
 end

@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160630224727) do
     t.string   "questionable_type"
     t.integer  "next_node_correct_id"
     t.integer  "next_node_wrong_id"
+    t.boolean  "first_node"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end

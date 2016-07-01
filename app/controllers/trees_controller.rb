@@ -15,6 +15,12 @@ class TreesController < ApplicationController
   # GET /trees/new
   def new
     @tree = Tree.new
+    @first_node = @tree.nodes.build
+    @first_node.questionable = ArgumentativeQuestion.new(question: 'hola')
+    # @n12 = @n11.build_next_node_wrong
+    # @n12.questionable = ArgumentativeQuestion.new
+    # @n21 = @n11.build_next_node_correct
+    # @n21.questionable = ArgumentativeQuestion.new
   end
 
   # GET /trees/1/edit
@@ -62,13 +68,14 @@ class TreesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tree
-      @tree = Tree.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tree
+    @tree = Tree.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tree_params
-      params.fetch(:tree, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tree_params
+    params.require(:tree).permit(:n_repeat,
+                                 nodes_attributes: [:id, :first_node, :questionable_type, questionable_attributes: [ :id, :question]])
+  end
 end

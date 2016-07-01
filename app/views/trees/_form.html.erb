@@ -1,10 +1,17 @@
-<%= simple_form_for(@tree) do |f| %>
+<%= simple_form_for(@tree, html: { class: 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
-
+  <%= image_tag 'modelo.png', class: 'img-responsive', style: 'margin: auto', width: 100 %>
   <div class="form-inputs">
-    <%=  %>
-  </div>
+    <%= f.input :n_repeat %>
+    <%= f.simple_fields_for :nodes do |n| %>
+      <%= n.input :questionable_type, as: :hidden %>
+      <%= n.input :first_node, as: :boolean %>
 
+      <%= n.simple_fields_for :questionable do |q| %>
+        <%= q.input :question %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
