@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Argumentative Answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @argumentative_answers.each do |argumentative_answer| %>
+      <tr>
+        <td><%= link_to 'Show', argumentative_answer %></td>
+        <td><%= link_to 'Edit', edit_argumentative_answer_path(argumentative_answer) %></td>
+        <td><%= link_to 'Destroy', argumentative_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Argumentative answer', new_argumentative_answer_path %>

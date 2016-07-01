@@ -50,3 +50,5 @@ end
 
 
 gem 'puma'
+
+gem 'simple_form'
