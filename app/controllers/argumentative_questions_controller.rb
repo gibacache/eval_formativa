@@ -28,7 +28,7 @@ class ArgumentativeQuestionsController < ApplicationController
 
     respond_to do |format|
       if @argumentative_question.save
-        format.html { redirect_to @argumentative_question, notice: 'Argumentative question was successfully created.' }
+        format.html { redirect_to argumentative_questions_path, notice: 'Pregunta creada.' }
         format.json { render :show, status: :created, location: @argumentative_question }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ArgumentativeQuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @argumentative_question.update(argumentative_question_params)
-        format.html { redirect_to @argumentative_question, notice: 'Argumentative question was successfully updated.' }
+        format.html { redirect_to argumentative_questions_path, notice: 'Pregunta actualizada.' }
         format.json { render :show, status: :ok, location: @argumentative_question }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ArgumentativeQuestionsController < ApplicationController
   def destroy
     @argumentative_question.destroy
     respond_to do |format|
-      format.html { redirect_to argumentative_questions_url, notice: 'Argumentative question was successfully destroyed.' }
+      format.html { redirect_to argumentative_questions_url, notice: 'Pregunta eliminada.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ArgumentativeQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def argumentative_question_params
-      params.fetch(:argumentative_question, {})
+      params.require(:argumentative_question).permit(:critical_thinking_list, :subject_list, :question,:answer1, :answer2, :answer3, :answer4, :argument1, :argument2, :argument3      , :argument4      , :correct_answer      , :correct_argument      , :feedback_wrong_argument, :feedback_wrong      , :subject      , :critical_thinking)
     end
 end

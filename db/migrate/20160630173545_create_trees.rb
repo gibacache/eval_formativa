@@ -1,6 +1,7 @@
 class CreateTrees < ActiveRecord::Migration
   def change
     create_table :trees do |t|
+      t.string :label
       t.integer :first_node_id
       t.integer :n_repeat
       t.timestamps null: false

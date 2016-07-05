@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  get 'trees/reset' => 'trees#reset', as: :reset
   resources :responses
   resources :argumentative_answers
   resources :argumentative_questions
   resources :nodes
   resources :trees
   resources :users
+
+  post '/:id' => 'trees#show'
+  post '/:id/answer' => 'trees#answer'
+  get '/gracias' => 'welcome#thankyou', as: :thankyou
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

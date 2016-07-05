@@ -15,6 +15,7 @@ class NodesController < ApplicationController
   # GET /nodes/new
   def new
     @node = Node.new
+    @node.questionable = ArgumentativeQuestion.new
   end
 
   # GET /nodes/1/edit
@@ -28,7 +29,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.save
-        format.html { redirect_to @node, notice: 'Node was successfully created.' }
+        format.html { redirect_to nodes_path, notice: 'Nodo creado.' }
         format.json { render :show, status: :created, location: @node }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class NodesController < ApplicationController
   def update
     respond_to do |format|
       if @node.update(node_params)
-        format.html { redirect_to @node, notice: 'Node was successfully updated.' }
+        format.html { redirect_to nodes_path, notice: 'Nodo actualizado.' }
         format.json { render :show, status: :ok, location: @node }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class NodesController < ApplicationController
   def destroy
     @node.destroy
     respond_to do |format|
-      format.html { redirect_to nodes_url, notice: 'Node was successfully destroyed.' }
+      format.html { redirect_to nodes_url, notice: 'Nodo eliminado.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class NodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def node_params
-      params.fetch(:node, {})
+      params.require(:node).permit(:label, :tree_id, :next_node_correct_id, :next_node_wrong_id, :questionable_id, :questionable_type)
     end
 end

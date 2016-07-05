@@ -13,9 +13,7 @@ class CreateArgumentativeQuestions < ActiveRecord::Migration
       t.integer :correct_answer
       t.integer :correct_argument
       t.text :feedback_wrong_argument
-      t.text :feedback_wrong_all
-      t.string :subject
-      t.string :critical_thinking
+      t.text :feedback_wrong
       t.timestamps null: false
     end
   end

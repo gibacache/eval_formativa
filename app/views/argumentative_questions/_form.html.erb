@@ -1,10 +1,42 @@
-<%= simple_form_for(@argumentative_question) do |f| %>
-  <%= f.error_notification %>
-
+<%= simple_form_for(@argumentative_question) do |q| %>
+  <%= q.error_notification %>
   <div class="form-inputs">
-  </div>
+    <%= q.input :question %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= q.input :answer1 %>
+        <%= q.input :answer2 %>
+        <%= q.input :answer3 %>
+        <%= q.input :answer4 %>
+      </div>
+      <div class="col-sm-6">
+        <%= q.input :argument1 %>
+        <%= q.input :argument2 %>
+        <%= q.input :argument3 %>
+        <%= q.input :argument4 %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <%= q.input :correct_answer, collection: 1..4, as: :radio_buttons, item_label_class: "radio-inline", item_wrapper_tag: false, label_html: {class: 'block'} %>
+        <%= q.input :subject_list %>
+      </div>
+      <div class="col-xs-6">
+        <%= q.input :correct_argument, collection: 1..4, as: :radio_buttons, item_label_class: "radio-inline", item_wrapper_tag: false, label_html: {class: 'block'} %>
+        <%= q.input :critical_thinking_list %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <%= q.input :feedback_wrong %>
+      </div>
+      <div class="col-xs-6">
 
+        <%= q.input :feedback_wrong_argument %>
+      </div>
+    </div>
+  </div>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= q.button :submit %>
   </div>
 <% end %>

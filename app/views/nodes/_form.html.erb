@@ -1,10 +1,20 @@
-<%= simple_form_for(@node) do |f| %>
-  <%= f.error_notification %>
-
+<%= simple_form_for(@node) do |n| %>
+  <%= n.error_notification %>
   <div class="form-inputs">
+    <%= n.input :label %>
+    <%= n.input :questionable_type, collection: [[ArgumentativeQuestion.model_name.human,ArgumentativeQuestion.to_s]], include_blank: false %>
+    <%= n.input :questionable_id, collection: ArgumentativeQuestion.all, include_blank: false  %>
+    <%= n.association :tree %>
+    <div class="row">
+      <div class="col-xs-6">
+        <%= n.association :next_node_correct %>
+      </div>
+      <div class="col-xs-6">
+        <%= n.association :next_node_wrong %>
+      </div>
+    </div>
   </div>
-
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= n.button :submit %>
   </div>
 <% end %>

@@ -1,12 +1,13 @@
 class CreateNodes < ActiveRecord::Migration
   def change
     create_table :nodes do |t|
-      t.integer :tree_id, index: true, null: false
+      t.integer :tree_id, index: true
+      t.string :label
       t.integer :questionable_id, index: true, null: false
       t.string  :questionable_type
       t.integer :next_node_correct_id
       t.integer :next_node_wrong_id
-      t.boolean :first_node
+
       t.timestamps null: false
     end
 

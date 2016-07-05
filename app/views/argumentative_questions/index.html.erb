@@ -1,10 +1,14 @@
-<p id="notice"><%= notice %></p>
+<%= index_title %>
 
-<h1>Listing Argumentative Questions</h1>
-
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>id</th>
+      <th>Pregunta</th>
+      <th>Tags Contenido</th>
+      <th>Tags Pens. Crítico</th>
+      <th>F. argumento incorrecto</th>
+      <th>F. incorrecto</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,9 +16,13 @@
   <tbody>
     <% @argumentative_questions.each do |argumentative_question| %>
       <tr>
-        <td><%= link_to 'Show', argumentative_question %></td>
-        <td><%= link_to 'Edit', edit_argumentative_question_path(argumentative_question) %></td>
-        <td><%= link_to 'Destroy', argumentative_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= argumentative_question.id %></td>
+        <td><%= argumentative_question.question %></td>
+        <td><%= argumentative_question.subject_list %></td>
+        <td><%= argumentative_question.critical_thinking_list %></td>
+        <td><%= argumentative_question.feedback_wrong_argument %></td>
+        <td><%= argumentative_question.feedback_wrong %></td>
+        <%= render 'shared/index_actions', object: argumentative_question %>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Argumentative question', new_argumentative_question_path %>
+<%= link_to_new_path %>

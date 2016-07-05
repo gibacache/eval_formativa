@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>TreesController</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            TreesController 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="ApplicationController.html">ApplicationController</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/app/controllers/trees_controller_rb.html">app/controllers/trees_controller.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-answer">answer</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-create">create</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-destroy">destroy</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-edit">edit</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-index">index</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-reset">reset</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-show">show</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-update">update</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-answer">
+            
+              <b>answer</b>()
+            
+            <a href="../classes/TreesController.html#method-i-answer" name="method-i-answer" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-answer_source')" id="l_method-i-answer_source">show</a>
+                
+              </p>
+              <div id="method-i-answer_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">answer</span>
+  <span class="ruby-ivar">@node</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] <span class="ruby-operator">?</span> <span class="ruby-constant">Node</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>]) <span class="ruby-operator">:</span> <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">first_node</span>
+  <span class="ruby-ivar">@question</span> = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">questionable</span>
+
+  <span class="ruby-identifier">correct</span>, <span class="ruby-identifier">feedback</span> = <span class="ruby-ivar">@question</span>.<span class="ruby-identifier">evaluate_answer</span>(<span class="ruby-identifier">params</span>)
+
+  <span class="ruby-comment"># answerable = ArgumentativeAnswer.create(answer: @question.send(&quot;answer_#{params[:answer].to_i}&quot;), argument: @question.send(&quot;argument_#{params[:argument].to_i}&quot;))</span>
+  <span class="ruby-comment"># Response.create(answerable: answerable, user: @user = User.where(id: session[:user_id]).first)</span>
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:feedback</span>] = <span class="ruby-identifier">feedback</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">correct</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">next_node_correct</span>
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">next_node_correct</span>.<span class="ruby-identifier">id</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@tree</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Respuesta correcta&#39;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] = <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">thankyou_path</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:repeat</span>] <span class="ruby-operator">||=</span> <span class="ruby-number">0</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ans</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">next_node_wrong</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@node</span>
+        <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">next_node_wrong</span>.<span class="ruby-identifier">id</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@tree</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Respuesta mal argumentada&#39;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] = <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">thankyou_path</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span> <span class="ruby-operator">!</span><span class="ruby-identifier">ans</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">next_node_wrong</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@node</span>
+        <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">next_node_wrong</span>.<span class="ruby-identifier">id</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@tree</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Respuesta incorrecta&#39;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] = <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">thankyou_path</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create">
+            
+              <b>create</b>()
+            
+            <a href="../classes/TreesController.html#method-i-create" name="method-i-create" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>POST /trees POST /trees.json</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_source')" id="l_method-i-create_source">show</a>
+                
+              </p>
+              <div id="method-i-create_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create</span>
+  <span class="ruby-ivar">@tree</span> = <span class="ruby-constant">Tree</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tree_params</span>)
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@tree</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Tree was successfully created.&#39;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:show</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@tree</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:new</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-destroy">
+            
+              <b>destroy</b>()
+            
+            <a href="../classes/TreesController.html#method-i-destroy" name="method-i-destroy" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>DELETE /trees/1 DELETE /trees/1.json</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-destroy_source')" id="l_method-i-destroy_source">show</a>
+                
+              </p>
+              <div id="method-i-destroy_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 134</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">destroy</span>
+  <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">trees_url</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Tree was successfully destroyed.&#39;</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-edit">
+            
+              <b>edit</b>()
+            
+            <a href="../classes/TreesController.html#method-i-edit" name="method-i-edit" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>GET /trees/1/edit</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-edit_source')" id="l_method-i-edit_source">show</a>
+                
+              </p>
+              <div id="method-i-edit_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">edit</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-index">
+            
+              <b>index</b>()
+            
+            <a href="../classes/TreesController.html#method-i-index" name="method-i-index" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>GET /trees GET /trees.json</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-index_source')" id="l_method-i-index_source">show</a>
+                
+              </p>
+              <div id="method-i-index_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">index</span>
+  <span class="ruby-ivar">@trees</span> = <span class="ruby-constant">Tree</span>.<span class="ruby-identifier">all</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-new">
+            
+              <b>new</b>()
+            
+            <a href="../classes/TreesController.html#method-i-new" name="method-i-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>GET /trees/new</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-new_source')" id="l_method-i-new_source">show</a>
+                
+              </p>
+              <div id="method-i-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">new</span>
+  <span class="ruby-ivar">@tree</span> = <span class="ruby-constant">Tree</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@first_node</span> = <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">first_node</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>)
+  <span class="ruby-ivar">@first_node</span>.<span class="ruby-identifier">questionable</span> = <span class="ruby-constant">ArgumentativeQuestion</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@n12</span> = <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">build</span>
+  <span class="ruby-ivar">@n12</span>.<span class="ruby-identifier">questionable</span> = <span class="ruby-constant">ArgumentativeQuestion</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@n21</span> = <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">build</span>
+  <span class="ruby-ivar">@n21</span>.<span class="ruby-identifier">questionable</span> = <span class="ruby-constant">ArgumentativeQuestion</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-ivar">@first_node</span>.<span class="ruby-identifier">next_node_correct</span> = <span class="ruby-ivar">@n21</span>
+  <span class="ruby-ivar">@first_node</span>.<span class="ruby-identifier">next_node_wrong</span> = <span class="ruby-ivar">@n12</span>
+
+  <span class="ruby-ivar">@n12</span>.<span class="ruby-identifier">next_node_correct</span> = <span class="ruby-ivar">@n21</span>
+  <span class="ruby-ivar">@n12</span>.<span class="ruby-identifier">next_node_wrong</span> = <span class="ruby-ivar">@n12</span>
+
+  <span class="ruby-ivar">@n21</span>.<span class="ruby-identifier">next_node_correct</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@n21</span>.<span class="ruby-identifier">next_node_wrong</span> = <span class="ruby-ivar">@n21</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reset">
+            
+              <b>reset</b>()
+            
+            <a href="../classes/TreesController.html#method-i-reset" name="method-i-reset" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-reset_source')" id="l_method-i-reset_source">show</a>
+                
+              </p>
+              <div id="method-i-reset_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reset</span>
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-constant">Tree</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-show">
+            
+              <b>show</b>()
+            
+            <a href="../classes/TreesController.html#method-i-show" name="method-i-show" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>GET /trees/1 GET /trees/1.json</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-show_source')" id="l_method-i-show_source">show</a>
+                
+              </p>
+              <div id="method-i-show_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">show</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+      <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>]).<span class="ruby-identifier">first</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">student_id</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;student&#39;</span>)
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>] = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">student_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;student&#39;</span>
+    <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_or_create_by</span>(<span class="ruby-identifier">student_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">student_id</span>)
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>] = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Node</span>.<span class="ruby-identifier">exists?</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>]
+    <span class="ruby-ivar">@node</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">find</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_node_id</span>] = <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@node</span> = <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">first_node</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@question</span> = <span class="ruby-ivar">@node</span>.<span class="ruby-identifier">questionable</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-update">
+            
+              <b>update</b>()
+            
+            <a href="../classes/TreesController.html#method-i-update" name="method-i-update" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>PATCH/PUT /trees/1 PATCH/PUT /trees/1.json</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-update_source')" id="l_method-i-update_source">show</a>
+                
+              </p>
+              <div id="method-i-update_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/controllers/trees_controller.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">update</span>
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">tree_params</span>)
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@tree</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Tree was successfully updated.&#39;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:show</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:ok</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@tree</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:edit</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@tree</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,15 @@
+<td>
+  <%= link_to object do %>
+    <i class="fa fa-eye"></i> <%= t(:show, scope: 'site') %>
+  <% end %>
+</td>
+<td>
+  <%= link_to object_edit_path(object) do %>
+    <i class="fa fa-pencil"></i> <%= t(:edit, scope: 'site') %>
+  <% end %>
+</td>
+<td>
+  <%= link_to object, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="fa fa-trash-o"></i> <%= t(:destroy, scope: 'site') %>
+  <% end %>
+</td>

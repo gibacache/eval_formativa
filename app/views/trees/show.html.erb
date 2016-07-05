@@ -1,4 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_tree_path(@tree) %> |
-<%= link_to 'Back', trees_path %>
+<% if flash[:feedback] %>
+  <div class="row">
+    <div class="alert alert-success">
+      <p><b>Feedback</b></p>
+      <p><%= flash[:feedback] %></p>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <%= form_tag controller: :trees, action: :answer, id: @tree.id, method: :post do %>
+    <h2><span class="label label-primary"><%= @node.label %></span> <%= @question.question %></h2>
+    <hr>
+    <%= render "#{ActiveModel::Naming.plural @question}/student_view", question: @question %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= submit_tag "Enviar respuesta", class: 'btn btn-default' %>
+      </div>
+    </div>
+  <% end %>
+</div>

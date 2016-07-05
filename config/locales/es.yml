@@ -1,4 +1,9 @@
 es:
+  site:
+    show: Ver
+    edit: Editar
+    destroy: Eliminar
+    new: Crear
   activerecord:
     models:
       tree: Árbol
@@ -10,13 +15,34 @@ es:
       user: Usuario
     attributes:
       tree:
+        label: Etiqueta
         n_repeat: Numero de repeticiones N
-        first_question: Primera pregunta
+        first_node: Nodo inicial
       argumentative_question:
+        nodes: Nodos
         question: Pregunta
+        critical_thinking_list: Tags Pensamiento Crítico
+        subject_list: Tags Contenidos
+        answer1: Respuesta 1
+        answer2: Respuesta 2
+        answer3: Respuesta 3
+        answer4: Respuesta 4
+        argument1: Argumento 1
+        argument2: Argumento 2
+        argument3: Argumento 3
+        argument4: Argumento 4
+        correct_answer: Respuesta correcta
+        correct_argument: Argumento correcto
+        feedback_wrong_argument: Feedback argumento incorrecto
+        feedback_wrong: Feedback incorrecto
       questionable:
         question: Pregunta
       node:
-        questionable: Pregunta
+        label: Etiqueta
+        questionable_type: Tipo de Pregunta
+        questionable_id: Id de Pregunta
         tree: Árbol
+        next_node_correct: Siguiente nodo para respuesta correcta
+        next_node_wrong: Siguiente nodo para respuesta incorrecta
+        questionable: Pregunta
 
