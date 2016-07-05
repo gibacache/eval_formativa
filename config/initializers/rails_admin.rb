@@ -24,7 +24,7 @@ RailsAdmin.config do |config|
       :question
     end
     list do
-      include_fields :id, :question, :feedback_wrong_argument, :feedback_wrong, :nodes
+      include_fields :id, :question, :feedback_wrong_argument, :feedback_wrong, :correct_answer, :correct_argument, :nodes
       include_all_fields
     end
   end

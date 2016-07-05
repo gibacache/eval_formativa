@@ -6,6 +6,8 @@ class TreesController < ApplicationController
 
   def reset
     session[:current_node_id] = nil
+    ArgumentativeAnswer.destroy_all
+    Response.destroy_all
     redirect_to Tree.first
   end
 
@@ -13,9 +15,9 @@ class TreesController < ApplicationController
   def answer
     @question = @node.questionable
 
-    correct, feedback = @question.evaluate_answer(params)
+    correct, score, feedback = @question.evaluate_answer(params)
     answerable = ArgumentativeAnswer.create(answer: @question.send("answer#{params[:answer].to_i}"), argument: @question.send("argument#{params[:argument].to_i}"))
-    Response.create(questionable: @question, answerable: answerable, user: @user, node: @node)
+    Response.create(questionable: @question, answerable: answerable, user: @user, node: @node, score: score)
 
     flash[:feedback] = feedback
     if correct
@@ -128,7 +130,7 @@ class TreesController < ApplicationController
 
   def set_node
     unless @node = Node.find_by(id: session[:current_node_id])
-      session[:current_node_id] = nil
+      session[:current_node_id] = @tree.first_node.id
       @node = @tree.first_node
     end
   end

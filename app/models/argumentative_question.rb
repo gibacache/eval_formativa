@@ -34,7 +34,10 @@ class ArgumentativeQuestion < Question
     ans = params[:answer].to_i == self.correct_answer
     arg = params[:argument].to_i == self.correct_argument
     correct = ans && arg
-    feedback = ans ? self.feedback_wrong_with_default : self.feedback_wrong_argument_with_default if !correct
-    return correct, feedback
+    score = 1 if correct
+    score = 0.5 if ans && !arg
+    score = 0 if !correct
+    feedback = ans ? self.feedback_wrong_argument_with_default : self.feedback_wrong_with_default if !correct
+    return correct, score, feedback
   end
 end

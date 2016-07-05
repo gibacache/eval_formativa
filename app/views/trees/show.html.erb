@@ -9,6 +9,9 @@
 <div class="row">
   <%= form_tag controller: :trees, action: :answer, id: @tree.id, method: :post do %>
     <h2><span class="label label-primary"><%= @node.label %></span> <%= @question.question %></h2>
+    <% if @node.is_repeat? %>
+      <p class="text-muted">Te quedan <%= @user.tries_remaining(@node) %> de <%= @tree.n_repeat %> intentos</p>
+    <% end %>
     <hr>
     <%= render "#{ActiveModel::Naming.plural @question}/student_view", question: @question %>
     <div class="row">
