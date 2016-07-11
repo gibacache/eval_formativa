@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   def tries_remaining(node)
-    node.tree.n_repeat - Response.where(user: self, node: node).count
+    node.tree.max_tries - Response.where(user: self, node: node).count
   end
 
   def can_answer?(node)

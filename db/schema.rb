@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 20160705195229) do
   create_table "argumentative_answers", force: :cascade do |t|
     t.string   "answer"
     t.string   "argument"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "answer_score"
+    t.integer  "argument_score"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "argumentative_questions", force: :cascade do |t|
@@ -36,6 +38,13 @@ ActiveRecord::Schema.define(version: 20160705195229) do
     t.text     "feedback_wrong"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "number"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "nodes", force: :cascade do |t|
@@ -89,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160705195229) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
   create_table "trees", force: :cascade do |t|
+    t.integer  "course_id"
     t.string   "label"
     t.integer  "first_node_id"
     t.integer  "n_repeat"

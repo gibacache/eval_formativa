@@ -2,6 +2,7 @@
   <%= f.error_notification %>
   <%= image_tag 'modelo.png', class: 'img-responsive', style: 'margin: auto', width: 400 %>
   <div class="form-inputs">
+    <%= f.association :course, include_blank: false %>
     <%= f.association :first_node, include_blank: false %>
     <%= f.input :n_repeat %>
   </div>

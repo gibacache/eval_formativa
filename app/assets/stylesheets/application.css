@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .thead-center>tr>th{
+    vertical-align: top !important;
+}

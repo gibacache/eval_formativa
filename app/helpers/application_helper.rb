@@ -23,4 +23,21 @@ module ApplicationHelper
   def link_to_new_path
     link_to "+ #{t(:new, scope: 'site')} #{controller_class.model_name.human}", send("new_#{controller_class.name.underscore}_path"), class: 'btn btn-default'
   end
+
+  def critical_thinking_tags
+    # [*1..6].map { |n| "hab#{n}"}
+    [
+      "Interpretar",
+      "Análisis",
+      "Evaluación",
+      "Inferencia",
+      "Explicación",
+      "Metacognición"
+    ]
+  end
+
+  def subject_tags
+    [*1..4].map { |n| "contenido_#{n}"}
+  end
+
 end

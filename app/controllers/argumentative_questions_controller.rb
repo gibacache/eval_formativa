@@ -10,6 +10,7 @@ class ArgumentativeQuestionsController < ApplicationController
   # GET /argumentative_questions/1
   # GET /argumentative_questions/1.json
   def show
+    render :edit
   end
 
   # GET /argumentative_questions/new
@@ -69,6 +70,6 @@ class ArgumentativeQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def argumentative_question_params
-      params.require(:argumentative_question).permit(:critical_thinking_list, :subject_list, :question,:answer1, :answer2, :answer3, :answer4, :argument1, :argument2, :argument3      , :argument4      , :correct_answer      , :correct_argument      , :feedback_wrong_argument, :feedback_wrong      , :subject      , :critical_thinking)
+      params.require(:argumentative_question).permit(:question,:answer1, :answer2, :answer3, :answer4, :argument1, :argument2, :argument3      , :argument4      , :correct_answer      , :correct_argument      , :feedback_wrong_argument, :feedback_wrong      , critical_thinking_list: [], subject_list: [])
     end
 end

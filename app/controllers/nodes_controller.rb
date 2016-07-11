@@ -10,6 +10,7 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.json
   def show
+    render :edit
   end
 
   # GET /nodes/new

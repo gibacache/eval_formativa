@@ -1,23 +1,47 @@
-<h1>Listing Responses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @responses.each do |response| %>
+<%= index_title %>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead class="thead-center">
       <tr>
-        <td><%= link_to 'Show', response %></td>
-        <td><%= link_to 'Edit', edit_response_path(response) %></td>
-        <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>
+          <p class="text-right">Hab. PC</p>
+          <p class="text-left">Contenido</p>
+        </th>
+        <% critical_thinking_tags.each do |ct| %>
+          <th class="text-right"><%= ct %></th>
+        <% end %>
+        <th class="text-right"><b>Total Contenido</b></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Response', new_response_path %>
+    </thead>
+    <tbody>
+      <% ct_scores_array = Array.new(critical_thinking_tags.size) { Array.new(0) } %>
+      <% subject_tags.each do |st| %>
+        <% st_scores = [] %>
+        <tr>
+          <td>
+            <p><br>
+            </p>
+            <p><%= st %></p>
+          </td>
+          <% critical_thinking_tags.each_with_index do |ct,i| %>
+            <td>
+              <p class="text-right"><%= ct_score = ArgumentativeQuestion.tagged_with(ct, :on => :critical_thinking).tagged_with(st, :on => :subject).get_score(:critical_thinking) %></p>
+              <p class="text-left"><%= st_score = ArgumentativeQuestion.tagged_with(ct, :on => :critical_thinking).tagged_with(st, :on => :subject).get_score(:subject) %></p>
+            </td>
+            <% st_scores << st_score if st_score.is_a? Numeric %>
+            <% ct_scores_array[i] << ct_score if ct_score.is_a? Numeric  %>
+          <% end %>
+          <td class="text-right">
+            <%= st_scores.size > 0 ? st_scores.sum / st_scores.size : 'N/O' %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>Total Habilidad PC</td>
+        <% ct_scores_array.each do |ct_scores| %>
+          <td><%= ct_scores.size > 0 ? ct_scores.sum / ct_scores.size : 'N/O' %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

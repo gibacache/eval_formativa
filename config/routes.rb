@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :courses
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  get 'reset' => 'trees#reset', as: :reset
+  delete 'reset' => 'trees#reset', as: :reset
   resources :responses
   resources :argumentative_answers
   resources :argumentative_questions
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  post '/' => 'welcome#index'
-  # root 'welcome#index'
+  post '/' => 'welcome#view_params'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

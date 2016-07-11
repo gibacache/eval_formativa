@@ -6,6 +6,7 @@ es:
     new: Crear
   activerecord:
     models:
+      course: Curso
       tree: Árbol
       response: Respuesta
       questionable: Pregunta
@@ -14,10 +15,14 @@ es:
       node: Nodo
       user: Usuario
     attributes:
+      course:
+        name: Nombre del curso
+        number: Sigla
       tree:
         label: Etiqueta
         n_repeat: Numero de repeticiones N
         first_node: Nodo inicial
+        course: Curso
       argumentative_question:
         nodes: Nodos
         question: Pregunta

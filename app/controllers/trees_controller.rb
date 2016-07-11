@@ -8,15 +8,15 @@ class TreesController < ApplicationController
     session[:current_node_id] = nil
     ArgumentativeAnswer.destroy_all
     Response.destroy_all
-    redirect_to Tree.first
+    redirect_to root_path
   end
 
   # POST
   def answer
     @question = @node.questionable
 
-    correct, score, feedback = @question.evaluate_answer(params)
-    answerable = ArgumentativeAnswer.create(answer: @question.send("answer#{params[:answer].to_i}"), argument: @question.send("argument#{params[:argument].to_i}"))
+    correct, score, feedback, ans, ars = @question.evaluate_answer(params)
+    answerable = ArgumentativeAnswer.create(answer_score: ans, argument_score: ars, answer: @question.send("answer#{params[:answer].to_i}"), argument: @question.send("argument#{params[:argument].to_i}"))
     Response.create(questionable: @question, answerable: answerable, user: @user, node: @node, score: score)
 
     flash[:feedback] = feedback
@@ -155,7 +155,7 @@ class TreesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def tree_params
-    params.require(:tree).permit(:label, :n_repeat, :first_node_id,
+    params.require(:tree).permit(:label, :n_repeat, :first_node_id, :course_id,
                                  nodes_attributes: [:id, :first_node, :next_node_wrong, :next_node_correct, :questionable_type, questionable_attributes: [ :id, :question]], nodes_ids: [])
   end
 end

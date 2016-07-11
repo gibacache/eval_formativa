@@ -55,8 +55,14 @@ gem 'simple_form'
 
 gem 'rails_admin'
 
+# Translations
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x' # For 4.x
 
+# Dump database content to seeds.rb
 gem 'seed_dump'
 
+# Tags for models
 gem 'acts-as-taggable-on', '~> 3.4'
+
+# User login
+gem 'devise'

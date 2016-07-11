@@ -10,7 +10,7 @@
   <%= form_tag controller: :trees, action: :answer, id: @tree.id, method: :post do %>
     <h2><span class="label label-primary"><%= @node.label %></span> <%= @question.question %></h2>
     <% if @node.is_repeat? %>
-      <p class="text-muted">Te quedan <%= @user.tries_remaining(@node) %> de <%= @tree.n_repeat %> intentos</p>
+      <p class="text-muted">Llevas <%= @tree.max_tries - @user.tries_remaining(@node) %> de <%= @tree.max_tries %> intentos</p>
     <% end %>
     <hr>
     <%= render "#{ActiveModel::Naming.plural @question}/student_view", question: @question %>
