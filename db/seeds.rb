@@ -2,7 +2,7 @@ Course.create!([
   {number: "MAT101", name: "Didactica de las matemáticas 1"}
 ])
 Tree.create!([
-  {course_id: 1, label: "Video 1", first_node_id: 3, n_repeat: 3}
+  {course_id: 1, label: "Video 1", first_node_id: 3, n_repeat: 1}
 ])
 ArgumentativeQuestion.create!([
   {question: "Esta es la pregunta 1.1", answer1: "bien", answer2: "mal", answer3: "mal", answer4: "mal", argument1: "bien", argument2: "mal", argument3: "mal", argument4: "mal", correct_answer: 1, correct_argument: 1, feedback_wrong_argument: "F 1.1 ✔✘", feedback_wrong: "F 1.1 ✘✘"},

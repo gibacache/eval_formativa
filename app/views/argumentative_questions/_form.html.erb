@@ -20,12 +20,12 @@
       <div class="col-xs-6">
         <%= q.input :correct_answer, collection: 1..4, as: :radio_buttons, item_label_class: "radio-inline", item_wrapper_tag: false, label_html: {class: 'block'} %>
         <%# q.input :subject_list %>
-        <%= q.input :subject_list, collection: subject_tags, input_html: { multiple: true }, include_blank: true %>
+        <%= q.input :subject_list, collection: subject_tags, input_html: { multiple: true }, include_blank: true, hint: 'Selecciona varios con la tecla "Ctrl"' %>
       </div>
       <div class="col-xs-6">
         <%= q.input :correct_argument, collection: 1..4, as: :radio_buttons, item_label_class: "radio-inline", item_wrapper_tag: false, label_html: {class: 'block'} %>
         <%# q.input :critical_thinking_list %>
-        <%= q.input :critical_thinking_list, collection: critical_thinking_tags, input_html: { multiple: true }, include_blank: true %>
+        <%= q.input :critical_thinking_list, collection: critical_thinking_tags, input_html: { multiple: true }, include_blank: true, hint: 'Selecciona varios con la tecla "Ctrl"' %>
       </div>
     </div>
     <div class="row">
