@@ -31,15 +31,17 @@
             <% st_scores << st_score if st_score.is_a? Numeric %>
             <% ct_scores_array[i] << ct_score if ct_score.is_a? Numeric  %>
           <% end %>
-          <td class="text-right">
-            <%= st_scores.size > 0 ? st_scores.sum / st_scores.size : 'N/O' %>
+          <td>
+            <p><br>
+            </p>
+            <p><%= st_scores.size > 0 ? (st_scores.sum / st_scores.size).round(2) : 'N/O' %></p>
           </td>
         </tr>
       <% end %>
       <tr>
         <td>Total Habilidad PC</td>
         <% ct_scores_array.each do |ct_scores| %>
-          <td><%= ct_scores.size > 0 ? ct_scores.sum / ct_scores.size : 'N/O' %></td>
+          <td class="text-right"><%= ct_scores.size > 0 ? (ct_scores.sum / ct_scores.size).round(2) : 'N/O' %></td>
         <% end %>
       </tr>
     </tbody>

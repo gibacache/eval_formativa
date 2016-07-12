@@ -10,14 +10,10 @@ Rails.application.routes.draw do
   resources :trees
   resources :users
 
-  post '/:id' => 'trees#show'
-  post '/:id/answer' => 'trees#answer'
+
   get 'gracias' => 'welcome#thankyou', as: :thankyou
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
+  post '/trees/:id' => 'trees#show'
+  post '/trees/:id/answer' => 'trees#answer'
   post '/' => 'welcome#view_params'
   root 'welcome#index'
 

@@ -50,4 +50,18 @@ es:
         next_node_correct: Siguiente nodo para respuesta correcta
         next_node_wrong: Siguiente nodo para respuesta incorrecta
         questionable: Pregunta
+      response:
+        questionable: Pregunta asociada
+        answerable: Respuesta asociada
+        node: Nodo
+        user: Usuario
+        score: Puntaje
+      argumentative_answer:
+        answer: Respuesta
+        argument: Argumento
+        answer_score: Puntaje respuesta
+        argument_score: Puntaje argumento
+      user:
+        student: Id estudiante
+        username: Nombre usuario
 

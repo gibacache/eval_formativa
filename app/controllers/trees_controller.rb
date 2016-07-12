@@ -5,6 +5,7 @@ class TreesController < ApplicationController
   before_action :check_complete, only: [:show]
 
   def reset
+    session[:current_user_id] = nil
     session[:current_node_id] = nil
     ArgumentativeAnswer.destroy_all
     Response.destroy_all
@@ -122,6 +123,8 @@ class TreesController < ApplicationController
   private
 
   def check_complete
+    puts @user.inspect
+    puts @node.inspect
     unless @user.can_answer?(@node)
       session[:current_node_id] = nil
       redirect_to thankyou_path
@@ -136,16 +139,16 @@ class TreesController < ApplicationController
   end
 
   def set_user
-    if user_id = session[:user_id]
-      unless @user = User.find_by(id: user_id)
-        @user = User.create(student_id: 'student')
-        session[:user_id] = @user.id
-      end
-    else
-      student_id = params[:user_id] || 'student'
+    student_id = params[:user_id]
+    session[:current_user_id] = nil if student_id
+    student_id ||= 'student'
+    unless @user = User.find_by(id: session[:current_user_id])
       @user = User.find_or_create_by(student_id: student_id)
-      session[:user_id] = @user.id
+      @user.email ||= params['lis_person_contact_email_primary']
+      @user.username ||= params['lis_person_sourcedid']
+      @user.save if @user.changed?
     end
+    session[:current_user_id] = @user.id
   end
 
   # Use callbacks to share common setup or constraints between actions.
