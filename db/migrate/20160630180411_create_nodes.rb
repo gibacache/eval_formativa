@@ -13,6 +13,6 @@ class CreateNodes < ActiveRecord::Migration
 
     add_foreign_key :nodes, :trees, column: :tree_id
     add_foreign_key :nodes, :nodes, column: :next_node_correct_id
-    add_foreign_key :nodes, :nodes, column: :next_node__wrong_id
+    add_foreign_key :nodes, :nodes, column: :next_node_wrong_id
   end
 end
