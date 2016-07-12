@@ -7,7 +7,7 @@ class CreateTrees < ActiveRecord::Migration
       t.integer :n_repeat
       t.timestamps null: false
     end
-    add_foreign_key :trees, :nodes, column: :first_node_id
+    # add_foreign_key :trees, :nodes, column: :first_node_id
     add_foreign_key :trees, :courses, column: :course_id
   end
 end
