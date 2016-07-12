@@ -7,10 +7,10 @@
     <%= n.association :tree %>
     <div class="row">
       <div class="col-xs-6">
-        <%= n.association :next_node_correct %>
+        <%= n.association :next_node_correct, hint: 'Dejar vacío si es el último' %>
       </div>
       <div class="col-xs-6">
-        <%= n.association :next_node_wrong %>
+        <%= n.association :next_node_wrong, hint: 'Si repite, indicar el mismo nodo' %>
       </div>
     </div>
   </div>

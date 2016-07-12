@@ -5,6 +5,6 @@ class Course < ActiveRecord::Base
 
 
   def to_label
-    "#{self.number} #{self.name}"
+    "#{self.number} - #{self.name}"
   end
 end

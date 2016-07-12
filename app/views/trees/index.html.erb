@@ -1,4 +1,3 @@
-
 <%= index_title %>
 <table class="table table-striped">
   <thead>
@@ -17,6 +16,11 @@
         <td><%= tree.course.to_label %></td>
         <td><%= tree.label %></td>
         <td><%= link_to tree.first_node.label, tree.first_node %></td>
+        <td>
+          <%= link_to tree do %>
+            <i class="fa fa-eye"></i> <%= t(:show, scope: 'site') %>
+          <% end %>
+        </td>
         <%= render 'shared/index_actions', object: tree %>
       </tr>
     <% end %>
